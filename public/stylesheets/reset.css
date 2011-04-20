@@ -1,0 +1,62 @@
+/**
+* Eric Meyer's reset
+*
+* @section reset
+* @link http://meyerweb.com/eric/tools/css/reset/
+*/
+html, body, div, span, object, iframe,
+h1, h2, h3, h4, h5, h6, p, blockquote, pre,
+a, abbr, address, cite, code,
+del, dfn, em, img, ins, kbd, q, samp,
+small, strong, sub, sup, var,
+b, i,
+dl, dt, dd, ol, ul, li,
+fieldset, form, label, legend,
+table, caption, tbody, tfoot, thead, tr, th, td,
+article, aside, canvas, details, figcaption, figure,
+footer, header, hgroup, menu, nav, section, summary {
+margin: 0;
+padding: 0;
+border: 0;
+outline: 0;
+font-size: 100%;
+vertical-align: baseline;
+background: transparent;
+}
+
+blockquote, q {quotes:none;}
+:focus {outline:0;}
+ins {text-decoration:none;}
+del {text-decoration:line-through;}
+table {border-collapse:collapse; border-spacing:0;}
+nav ul {list-style:none;}
+
+/**
+* HTML5 Elements
+*
+* @section block-level
+*/
+article,aside,canvas,details,figcaption,figure,
+footer,header,hgroup,menu,nav,section,summary { 
+	display:block;
+}
+
+abbr[title], dfn[title] {border-bottom:1px dotted;	cursor:help;}
+input, select {vertical-align:middle;}
+img{-ms-interpolation-mode:bicubic;}
+
+
+/**
+* Clear flow after floating elements
+*
+* @section clearing
+* @valid yes
+*/ 
+.clrfix:after {visibility:hidden; display:block; font-size:0; content:" "; clear:both; height:0;}
+.clear {clear:both; font-size:0; height:0; line-height:0;}
+.clear-left {clear:left;}
+.clear-right {clear:right;}
+
+/*** Floating ***/
+.fl {float:left;}
+.fr {float:right;}

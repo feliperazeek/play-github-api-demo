@@ -1,0 +1,153 @@
+<!-- Repository Details -->
+<div class="page-main">
+	<!-- Sub-Title -->
+	<h1>Repository: ${repository.name}</h1>
+	<h3>${repository.description}</h3>
+	
+	<!-- Details -->
+	<section class="content-main search-box repository"> 
+		<header>
+			<section>Details</section>
+		</header>
+		<section class="b-widget-body">
+			<p><span>Url</span>: <a href="${repository.url}" target="_blank">${repository.url}</a></p>
+			<p><span>Homepage</span>: <a href="${repository.homepage}" target="_blank">${repository.homepage}</a></p>
+			<p><span>Language</span>: ${repository.language}</p>
+			<p><span>Type</span>: %{ if (repository.type) { }%${repository.type}%{ } else { }%n/a%{ } }%</p>
+		</section>
+		<footer></footer>
+	</section>
+	
+	<!-- Ownership -->
+	<section class="content-main search-box repository"> 
+		<header>
+			<section>Ownership</section>
+		</header>
+		<section class="b-widget-body">
+			<p><span>Owner</span>: %{ if (repository.owner) { }%${repository.owner}%{ } else { }%n/a%{ } }%</p>
+			<p><span>Wiki?</span>: ${repository.hasWiki}</p>
+			<p><span>Organization</span>: %{ if (repository.organization) { }%${repository.organization}%{ } else { }%n/a%{ } }%</p>
+			<p><span>Has Downloads?</span>: ${repository.hasDownloads}</p>
+		</section>
+		<footer></footer>
+	</section>
+	
+	<!-- Popularity -->
+	<section class="content-main search-box repository"> 
+		<header>
+			<section>Popularity</section>
+		</header>
+		<section class="b-widget-body">
+			<p><span>Forks</span>: ${repository.forks}</p>
+			<p><span>Is it a Fork?</span> ${repository.fork}</p>
+			<p><span>Contributors</span>: ${contributors.size()}</p>
+		</section>
+		<footer></footer>
+	</section>
+	
+	<!-- Activity -->
+	<section class="content-main search-box repository"> 
+		<header>
+			<section>Activity</section>
+		</header>
+		<section class="b-widget-body">
+			<p><span>Open Issues</span>: ${repository.openIssues}</p>
+			<p><span>Size</span>: ${repository.size}</p>
+			<p><span>Create Date</span>: %{ if (repository.createdAt) { }%${repository.createdAt}%{ } else { }%n/a%{ } }%</p>
+			<p><span>Last Push</span>: %{ if (repository.pushedAt) { }%${repository.pushedAt}%{ } else { }%n/a%{ } }%</p>
+		</section>
+		<footer></footer>
+	</section>
+</div>
+
+<!-- Divider -->
+<div class="clear"></div>
+
+<!-- Committers -->
+<div class="page-main">
+	<!-- Sub-Title -->
+	<h1>Committer(s)</h1>
+	
+	<!-- List of Contributors -->
+	#{list contributors, as:'c' }
+		<section class="content-main search-box committer" id="widgetContributor-${c.name}"> 
+			<header>
+				<section>${c.name} (${c.login})</section>
+			</header>
+			<section class="b-widget-body">
+				#{ if c.gravatarId }
+					<img src="http://www.gravatar.com/avatar/${c.gravatarId}" width="80" height="80">
+				#{/if}
+				<p><span>Email</span>: %{ if (c.email) { }%${c.email}%{ } else { }%n/a%{ } }%</p>
+				<p><span>Location</span>: %{ if (c.location) { }%${c.location}%{ } else { }%n/a%{ } }%</p>
+				<p><span>Full Name</span>: %{ if (c.fullname) { }%${c.fullname}%{ } else { }%n/a%{ } }%</p>
+				<p><span>Blog</span>: %{ if (c.blog) { }%${c.blog}%{ } else { }%n/a%{ } }%</p>
+				<p><span>Company</span>: %{ if (c.company) { }%${c.company}%{ } else { }%n/a%{ } }%</p>
+			</section>
+			<footer></footer>
+		</section>
+	#{/list}
+</div>
+
+<!-- Divider -->
+<div class="clear"></div>
+
+<!-- Coder Impacts -->
+<div class="page-main">
+	<!-- Sub-Title -->
+	<h1>Impact(s)</h1>
+	
+	<!-- List of Coder Impacts -->
+	<section class="content-main search-box coderImpacts" id="widgetCoderImpacts"> 
+		<header>
+			<section>Impact(s)</section>
+		</header>
+		<section>
+			#{list coderImpacts, as:'c' }
+			<dl class="">
+				<dt class="t-size-x18 t-main">
+					<strong>%{ if (c.user) { }%${c.user}%{ } else { }%n/a%{ } }%</strong> - <strong>${c.commits}</strong> out of <strong>${c.totalCommits}</strong> total commits.
+				</dt>
+			</dl>
+			#{/list}
+		</section>
+		<footer>
+			<section>
+				<a class="lnk-ext" href="https://github.com/${repository.owner}/${repository.name}/commits/master" target="_blank">Commits @ Github</a>
+			</section>
+		</footer>
+	</section>
+</div>
+
+<!-- Divider -->
+<div class="clear"></div>
+
+<!-- Commits -->
+<div class="page-main">
+	<!-- Sub-Title -->
+	<h1>Commits</h1>
+	
+	<!-- Commits -->
+	<section class="content-main search-box committer" id="widgetCommits"> 
+		<header>
+			<section>Commits</section>
+		</header>
+		<section>
+			#{list commits, as:'c' }
+			<dl class="">
+				<dt class="t-size-x18 t-main">
+					${c.message}
+				</dt>
+				<dd>
+					<a href="${c.author.email}">${c.author.name}</a> (${c.author.login}) ${c.author.location}
+				</dd>
+			</dl>
+			#{/list}
+		</section>
+		<footer>
+			<section>
+				<a class="lnk-ext" href="https://github.com/${repository.owner}/${repository.name}/commits/master" target="_blank">Commits @ Github</a>
+			</section>
+		</footer>
+	</section>
+</div>

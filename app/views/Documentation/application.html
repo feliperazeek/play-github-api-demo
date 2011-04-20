@@ -1,0 +1,68 @@
+#{extends 'Documentation/layout.html' /}
+#{set title:'Application Design' /}
+
+
+<!-- Business Logic -->
+<div class="yui-t7">
+<h2>Business Logic</h2>
+</div>
+
+<div class="yui-t7">
+<br>
+All the business logic is encapsulated inside the class <i>mashup.fm.github.GithubService</i>.<br>
+This class is responsible for calling any necessary resource, like <a href="http://develop.github.com/" target="_blank">GitHub's RESTful API</a>, apply any logic necessary and return very simple POJOs to be used by the client.<br>
+This service class is also annotated with <i>javax.ws</i> annotations used by <a href="http://www.jboss.org/resteasy" target="_blank">JBoss RESTEasy</a> to provide RESTful interfaces.
+</div>
+
+<!-- Data Objects -->
+<div class="yui-t7">
+<br><br>
+<h2>Schema Definition / Data Objects</h2>
+</div>
+
+<div class="yui-t7">
+<br>
+All the data objects used by this application are stateless and are currently located under package <i>mashup.fm.github.schema</i>.<br>
+These classes are very simple POJOs that allow us to change the implementation behind the scenes without necessarily having to change the interfaces that our clients depend on.
+</div>
+
+<!-- Web Interface -->
+<div class="yui-t7">
+<br><br>
+<h2>Web UI</h2>
+</div>
+
+<div class="yui-t7">
+<br>
+All the web requests are routed to the <i>Application</i> controller. The application uses the business logic defined on service class <i>mashup.fm.github.GithubService</i> to feed necessary data to the view.<br>
+This web application is an "one-page webapp", ala Gmail, where Ajax is used to refresh the main content of the page only, headers and footers stay as is.<br>
+All the ajax logic is defined inside the header tag and make use of the beatiful combination of <a href="http://sammy.js">Sammy.JS</a> and <a href="http://www.playframework.org/documentation/1.2/ajax">Play! Framework's AJAX support</a>.
+</div>
+
+<!-- Caching -->
+<div class="yui-t7">
+<br><br>
+<h2>Caching</h2>
+</div>
+
+<div class="yui-t7">
+<br>
+We are caching all the calls to avoid making external calls to GitHub's API on each request we receive.<br>
+Since all the calls are read-only, we are only clearing the cache every two hours.<br>
+We are using Play!'s cache library, for more information click <a href="http://www.playframework.org/documentation/1.2/cache" target="_blank">here</a>.
+</div>
+
+<!-- Testing -->
+<div class="yui-t7">
+<br><br>
+<h2>Testing</h2>
+</div>
+
+<div class="yui-t7">
+<br>
+All the tests are currently under the <i>test</i> folder.<br>
+We are using the testing mechanism provided by Play!, for more information please click <a href="http://www.playframework.org/documentation/1.2/test" target="_blank">here</a>.<br>
+We are currently unit testing the API responsible for calling GitHub's API.<br>
+We also have a functional test that's making sure the RESTful APIs work as expected.<br>
+We have tests on different layers of the application to allow us to quickly identify problems when they come up (for example: an API change on GitHub's side would probabily break our application).
+</div>

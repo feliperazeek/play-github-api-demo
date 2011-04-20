@@ -1,0 +1,30 @@
+<div class="page-main">
+%{ if (user != null) { }%
+	<!-- Display User -->
+	%{ if (user.gravatarId) { }%
+		<img src="http://www.gravatar.com/avatar/${user.gravatarId}" width="80" height="80">
+	%{ } else { }%
+		<img src="http://www.gravatar.com/avatar/00000000000000000000000000000000?d=mm">
+	%{ } }%
+	
+	<h1>${user.name} (${user.login})</h1>
+	<label>Email</label> <p><a href="mailto:${user.email}">${user.email}</a></p>
+	<label>Location</label> %{ if (user.location) { }%<p>${user.location}</p>%{ } else { }%<p>n/a</p>%{ } }%
+	<label>Blog</label> %{ if (user.blog != null) { }%<p><a href="${user.blog}" target="_blank">${user.blog}</a></p>%{ } else { }%<p>n/a</p>%{ } }%
+	<label>Company</label> %{ if (user.company) { }%<p>${user.company}</p>%{ } else { }%<p>n/a</p>%{ } }%
+	<label>Following</label> <p>${user.followingCount}</p>
+	<label>Followers</label> <p>${user.followersCount}</p>
+	<label>Public Repositories</label> <p>${user.publicRepoCount}</p>
+	<label>Member Since</label> <p>${user.createdAt}</p>
+
+%{ } else { }%
+	<!-- User Not Found -->
+	<h1>No GitHub User Found with Username "${userName}".</h1>
+
+%{ } }%
+
+<hr>
+<p>
+<a href="#/"><strong>Start Another Search</strong></a>
+</p>
+</div>

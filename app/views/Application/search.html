@@ -1,0 +1,67 @@
+	
+
+<!-- Check Search Results -->
+%{ if (repositories != null && repositories.size() > 0) { }%
+	<!-- Display Each Search Result -->
+	<div class="page-main">
+		
+		<!-- Title -->
+		<p>
+		<h2>GitHub Repository Search "${q}".</h2>
+		<h2>Search Page No. ${startPage}.</h2>
+		</p>
+		<br>
+		
+		<!-- Pagination -->
+		<div class="pagination">		
+			<!-- Previous Page -->
+			%{ if (hasPreviousPage == true) { }%
+				<a href="#/search?q=${q}&startPage=${previousPage}"><< Previous Page</a>
+			%{ } %}
+			
+			<!-- Separator -->
+			%{ if (hasPreviousPage == true && hasNextPage == true) { }%
+				| 
+			%{ } %}
+			
+			<!-- Next Page -->
+			%{ if (hasNextPage == true) { }%
+				<a href="#/search?q=${q}&startPage=${nextPage}">Next Page >></a>
+			%{ } %}
+		</div>
+	
+		<!-- Repositories -->
+		%{ for (r in repositories) { }%
+			<div id="holder">
+				<section class="content-main search-box results">
+					<header>
+						<section><a href="#/repository/${r.owner}/${r.name}">${r.owner}/${r.name}</a> (${r.language})</section>
+					</header>
+					 <section>
+                            <p><span>Description</span>: ${r.description}</p>
+                            <p><span>Created On</span>: ${r.createdAt}</p>
+                            <p><span>Last Push</span>: ${r.pushedAt}</p>
+                            <p><span>Fork?</span>: ${r.fork}</p>
+                            <p><span>Followers</span>: ${r.followers}</p>
+                        </section>
+					<footer></footer>	
+				</section>
+			</div>
+		%{ } }%
+	</div>
+	
+	<!-- JQuery Masonry -->
+	<script>
+	$('#page-main').masonry({
+		columnWidth: 80, 
+		itemSelector: '.content-main' 
+	});
+	</script>
+	
+%{ } else { }%
+	<!-- No Results Available -->
+	<h3>No results found with search term "${q}".</h3>
+	<br><br>
+	<a href="#/">Start Another Search.</a>
+	
+%{ } }%
