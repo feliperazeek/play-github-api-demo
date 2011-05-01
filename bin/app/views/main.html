@@ -1,0 +1,126 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<!-- Title -->
+        <title>#{get 'title' /}</title>
+        
+        <!-- Meta Tags -->
+        <meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+        <meta name="author" content="Felipe Oliveira"> 
+        <meta name="description" content="GitHub Repositories">  
+
+		<!-- Favicon -->
+        <link rel="shortcut icon" type="image/ico" href="@{'/public/images/favicon.ico'}">
+
+		<!-- Stylesheet Libraries -->
+        <link rel="stylesheet" href="@{'/public/stylesheets/reset.css'}" type="text/css" media="screen"/>
+        <link rel="stylesheet" href="@{'/public/stylesheets/index.css'}" type="text/css" media="screen"/>
+                        
+        <!-- JS Libraries -->
+        <script src="@{'/public/javascripts/jquery-1.4.2.min.js'}" type="text/javascript" charset="utf-8"></script>
+        <script src="@{'/public/javascripts/sammy.js'}" type="text/javascript" charset="utf-8"></script>
+        <script src="@{'/public/javascripts/jquery.masonry.min.js'}" type="text/javascript" charset="utf-8"></script>
+   
+       	<!-- Sammy App -->
+        <script>
+	        ;(function($) {
+	        	// Define Sammy App
+	            var app = $.sammy('#main', function() {
+	          	  
+	            	// Util Params
+	              	this.debug = false;
+	              	var form_fields = null;
+	       
+	              	// Home - Application.searchForm()
+		              this.get('#/', function() {
+		              	var action = #{jsAction @searchForm() /}
+		                this.partial(action());
+		              });
+		       
+	              	// Search - Application.search()
+		              this.get('#/search', function() {
+		              	form_fields = this.params;
+		              	var action = #{jsAction @search(':search', ':startPage') /};
+		                this.partial(action({search: form_fields['q'], startPage: form_fields['startPage']}));
+		              });
+		              
+	              	// Repository Details - Application.repository()
+		              this.get('#/repository/:user/:repository', function() {
+		              	form_fields = this.params;
+		              	var action = #{jsAction @repository(':user', ':repository') /};
+		                this.partial(action({user: form_fields['user'], repository: form_fields['repository']}));
+		              });
+		              
+	              	// User Details Page - Application.user()
+		              this.get('#/user', function() {
+			          	form_fields = this.params;
+			            var action = #{jsAction @user(':userName') /};
+			            this.partial(action({userName: form_fields['userName']}));
+			          });
+	              
+	            });
+	       
+	            $(function() {
+	              app.run('#/');
+	            });
+	       
+	          })(jQuery);
+        </script>
+        
+	</head>
+	<body>
+	
+		<!-- Start Container -->
+		<div class="container-main">
+			<!-- Start Wrapper -->
+		    <div class="wrapper-main">
+				<!-- Start Header -->
+		        <header class="clrfix">
+		            <div class="b-top-bar">
+		                <div class="l-header-inner clrfix">
+		                    <div class="b-top-bar-logo">
+		                    	<a href="#/">
+		                    		<img src="/public/images/logo.png" width="202" height="60" alt="GitHub Analytics">
+		                    	</a>
+		                    </div>
+		                    <nav>
+		                        <ul class="clrfix">
+									<li><a href="#/">Home</a></li>
+					                <li><a href="mailto:fo@mashup.fm">Contact Us</a></li>
+									<li><a href="@{Documentation.index()}">Documentation</a></li>
+									<li><a href="@{Documentation.rest()}">API</a></li>
+								</ul>                    
+							</nav>
+		                </div>
+		            </div>
+		        </header>
+				<!-- End Header -->
+				
+		        <!-- Start Custom Page Layouts -->
+				#{doLayout /}
+		        <!-- End Custom Page Layouts -->
+		        
+		    </div>
+			<!--End Wrapper-->
+		</div>
+		<!--End Container-->
+		
+		<!--Start Footer-->
+		<div style="clear:both;"></div>
+		<footer>
+			<section>
+				<nav>
+					<a href="#/">Home</a> |
+					<a href="mailto:fo@mashup.fm">Contact Us</a> |
+					<a href="@{Documentation.index()}">Documentation</a> |
+					<a href="@{Documentation.rest()}">API</a></li>
+					<br /><br />
+					<a href="http://www.playframework.org">Powered by the always awesome Play! Framework</a> |
+					<a href="http://geeks.aretotally.in">Copyright &copy; 2011 Felipe Oliveira &ndash; All rights reserved</a>
+				</nav>
+			</section>
+		</footer>
+		<!--End Footer-->
+		
+	</body>
+</html> 

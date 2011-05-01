@@ -41,9 +41,27 @@
 <!-- Latest Searches  -->
 <section class="page-main content-main search-box">
 <h3>Latest Searches</h3>
-<ul>
-#{list latestSearches, as:'s' }
-	<li><a href="#/search?q=${s.searchTerm}">${s.searchTerm}</a>
-#{/list}
-</ul>
+<div id="thread">
+</div>
 </section>
+
+<!-- Live Stream -->
+
+<script type="text/javascript">
+
+    // Create a socket
+    var socket = new WebSocket('@@{LiveSearches.WebSocket.stream()}');
+    
+    // Display a message
+    var display = function(event) {
+    	//document.write(event);
+    	//(event);
+        $('#thread').append('<li><a href="#/search?q=' + event + '">' + event + '</a>');
+    }
+    
+    // Message received on the socket
+    socket.onmessage = function(event) {
+    	display(event.data);
+    }
+    
+</script>

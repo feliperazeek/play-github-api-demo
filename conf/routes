@@ -8,10 +8,15 @@
 # Home page
 GET     /                                       Application.index
 
+# Web Sockets
+WS      /livesearches                         	LiveSearches.WebSocket.stream
+
 # Documentation Urls
 GET		/documentation							Documentation.index
 GET		/documentation/application				Documentation.application
 GET		/documentation/rest						Documentation.rest
+
+GET 	/form.html								Application.searchForm
 
 # CRUD Module
 *      /admin              module:crud

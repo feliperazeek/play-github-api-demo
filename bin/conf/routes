@@ -1,0 +1,23 @@
+# Routes
+# This file defines all application routes (Higher priority routes first)
+# ~~~~
+
+# Import RESTEasy routes
+*     /                       module:resteasy
+
+# Home page
+GET     /                                       Application.index
+
+# Documentation Urls
+GET		/documentation							Documentation.index
+GET		/documentation/application				Documentation.application
+GET		/documentation/rest						Documentation.rest
+
+# CRUD Module
+*      /admin              module:crud
+
+# Map static resources from the /app/public folder to the /public path
+GET     /public/                                staticDir:public
+
+# Catch all
+*       /{controller}/{action}                  {controller}.{action}

@@ -25,6 +25,11 @@ import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
 
+import javax.ws.rs.GET;
+import javax.ws.rs.Path;
+import javax.ws.rs.PathParam;
+import javax.ws.rs.Produces;
+
 import mashup.fm.github.comparator.CoderImpactComparator;
 import mashup.fm.github.schema.CoderImpact;
 import mashup.fm.github.schema.Commit;
@@ -41,7 +46,7 @@ import util.ExceptionUtil;
 /**
  * The Class GithubClient.
  */
-// @Path("/github")
+@Path("/github")
 public class GithubService extends BaseService {
 
 	/** The Constant searchPattern. */
@@ -77,10 +82,10 @@ public class GithubService extends BaseService {
 	 *            the repository
 	 * @return the json object
 	 */
-	// @GET
-	// @Path("/repository/{user}/{repository}")
-	// @Produces("application/json")
-	public Repository repository(String user, String repository) {
+	@GET
+	@Path("/repository/{user}/{repository}")
+	@Produces("application/json")
+	public Repository repository(@PathParam("user") String user, @PathParam("repository") String repository) {
 		// Check Input
 		this.checkInputParam("user", user);
 		this.checkInputParam("repository", repository);
@@ -123,10 +128,10 @@ public class GithubService extends BaseService {
 	 *            the user
 	 * @return the json object
 	 */
-	// @GET
-	// @Path("/user/{user}")
-	// @Produces("application/json")
-	public User user(String user) {
+	@GET
+	@Path("/user/{user}")
+	@Produces("application/json")
+	public User user(@PathParam("user") String user) {
 		// Check Input
 		this.checkInputParam("user", user);
 
@@ -168,10 +173,10 @@ public class GithubService extends BaseService {
 	 *            the q
 	 * @return the json array
 	 */
-	// @GET
-	// @Path("/search/{q}/{startPage}")
-	// @Produces("application/json")
-	public List<Repository> search(String q, int startPage) {
+	@GET
+	@Path("/search/{q}/{startPage}")
+	@Produces("application/json")
+	public List<Repository> search(@PathParam("q") String q, @PathParam("startPage") int startPage) {
 		// Check Input
 		this.checkInputParam("q", q);
 
@@ -229,10 +234,10 @@ public class GithubService extends BaseService {
 	 *            the repository
 	 * @return the map
 	 */
-	// @GET
-	// @Path("/repository/{user}/{repository}/coderImpacts")
-	// @Produces("application/json")
-	public List<CoderImpact> coderImpacts(String user, String repository) {
+	@GET
+	@Path("/repository/{user}/{repository}/coderImpacts")
+	@Produces("application/json")
+	public List<CoderImpact> coderImpacts(@PathParam("user") String user, @PathParam("repository") String repository) {
 		// Check Input
 		this.checkInputParam("user", user);
 		this.checkInputParam("repository", repository);
@@ -318,10 +323,10 @@ public class GithubService extends BaseService {
 	 *            the repository
 	 * @return the json array
 	 */
-	// @GET
-	// @Path("/repository/{user}/{repository}/commits")
-	// @Produces("application/json")
-	public List<Commit> commits(String user, String repository) {
+	@GET
+	@Path("/repository/{user}/{repository}/commits")
+	@Produces("application/json")
+	public List<Commit> commits(@PathParam("user") String user, @PathParam("repository") String repository) {
 		// Check Input
 		this.checkInputParam("user", user);
 		this.checkInputParam("repository", repository);
@@ -381,10 +386,10 @@ public class GithubService extends BaseService {
 	 *            the repository
 	 * @return the json array
 	 */
-	// @GET
-	// @Path("/repository/{user}/{repository}/contributors")
-	// @Produces("application/json")
-	public List<User> contributors(String user, String repository) {
+	@GET
+	@Path("/repository/{user}/{repository}/contributors")
+	@Produces("application/json")
+	public List<User> contributors(@PathParam("user") String user, @PathParam("repository") String repository) {
 		// Check Cache If Needed
 		String cacheKey = "contributors_" + user + "_" + repository;
 		try {

@@ -1,0 +1,41 @@
+<!DOCTYPE html lang="en">
+<html>
+    <head>
+    	<!-- Title -->
+        <title>GitHub Analytics Documentation: #{get 'title' /}</title>
+        
+        <!-- Meta Tags -->
+        <meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+        <meta name="author" content="Felipe Oliveira"> 
+        <meta name="description" content="GitHub Analytics Documentation: #{get 'title' /}">  
+        
+        <!--  CSS -->
+        <link rel="stylesheet" type="text/css" href="http://yui.yahooapis.com/2.7.0/build/reset-fonts-grids/reset-fonts-grids.css" media="all" />
+        <link rel="stylesheet" type="text/css" href="@{'/public/stylesheets/documentation/documentation.css'}" media="all" />
+	</head>
+	<body>
+		<!-- Header -->
+    	<div class="yui-t7">
+    		<div id="hd" role="banner">
+				<h1><a href="@{Documentation.index()}">Github Analytics Documentation</a></h1>
+			</div>
+		</div>
+		
+		<!-- Title -->
+		<div id="doc" class="yui-t7">
+			<div id="hd" role="banner">
+				<h1>#{get 'title' /}</h1>
+			</div>
+		</div>
+		
+		<!-- Body -->
+		<div id="bd" role="main">
+        		#{doLayout /}
+        </div>
+        
+        <!-- Footer -->
+        <div id="ft" role="contentinfo">
+        	<p>Created by <a href="http://geeks.aretotally.in">Felipe Oliveira</a>. Powered by the always awesome <a href="http://www.playframework.org">Play! Framework</a>.</p>
+        </div>
+	</body>
+</html> 

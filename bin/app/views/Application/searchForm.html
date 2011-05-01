@@ -1,0 +1,49 @@
+<!-- Title -->
+<div class="page-main">
+<h1>GitHub Analysis</h1>
+<h3>This is a demo application demonstrating how easy and how awesome it is to do Ajax with the always awesome Play! Framework.</h3>
+</div>
+
+<!-- Repository Search -->
+<section class="page-main content-main search-box">
+	<header class="clrfix">
+		<h2>Repository Search</h2>
+	</header>
+	<section class="f-error-msg none"></section>
+	<section class="f-search-box">
+		<form id="search-form" method="GET" action="#/search">
+			<div class="row">
+			<label>Repository Search</label>
+			<input type="text" class="textbox" name="q" value="Example: Play Framework" onfocus="if(this.value=='Example: Play Framework'){this.value=''};" onblur="if(this.value==''){this.value='Play Framework'};" />
+			<input type="submit" value="">
+			</div>
+		</form>
+	</section>
+</section>
+    
+<!-- User Lookup -->  
+<section class="page-main content-main search-box">
+	<header class="clrfix">
+		<h2>User Lookup</h2>
+	</header>
+	<section class="f-error-msg none"></section>
+	<section class="f-search-box">
+		<form id="search-form" method="GET" action="#/user">
+		<div class="row">
+		<label>GitHub User Name</label>
+		<input type="text" class="textbox" name="userName" value="Example: feliperazeek" onfocus="if(this.value=='Example: feliperazeek'){this.value=''};" onblur="if(this.value==''){this.value='feliperazeek'};" />
+		<input type="submit" value="">
+		</div>
+		</form>
+	</section>
+</section>
+
+<!-- Latest Searches  -->
+<section class="page-main content-main search-box">
+<h3>Latest Searches</h3>
+<ul>
+#{list latestSearches, as:'s' }
+	<li><a href="#/search?q=${s.searchTerm}">${s.searchTerm}</a>
+#{/list}
+</ul>
+</section>

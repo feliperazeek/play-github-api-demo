@@ -27,7 +27,6 @@ import mashup.fm.github.schema.CoderImpact;
 import mashup.fm.github.schema.Commit;
 import mashup.fm.github.schema.Repository;
 import mashup.fm.github.schema.User;
-import models.SearchHistory;
 import play.Logger;
 import play.mvc.Controller;
 import util.ExceptionUtil;
@@ -48,8 +47,7 @@ public class Application extends Controller {
 	 * Search form.
 	 */
 	public static void searchForm() {
-		List<SearchHistory> latestSearches = getService().latestSearches();
-		render(latestSearches);
+		render();
 	}
 
 	/**
@@ -170,6 +168,10 @@ public class Application extends Controller {
 		// Get Data
 		List<Repository> repositories = new ArrayList<Repository>();
 		try {
+			// Live Stream
+			LiveSearches.liveStream.publish(q);
+			Logger.info("Published Live Search: %s", q);
+
 			// Hit Remote Service
 			List<Repository> list = getService().search(q, startPage);
 

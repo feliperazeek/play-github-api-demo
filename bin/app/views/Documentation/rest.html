@@ -1,0 +1,167 @@
+#{extends 'Documentation/layout.html' /}
+#{set title:'RESTful API - Resources' /}
+
+
+<!-- Resource Repository -->
+<div class="yui-t7">
+<h2>Repository</h2>
+</div>
+
+<div id="url" class="yui-t7">
+<br>
+<h3>Sample URL</h3>
+http://{host}/rest/github/repository/{user}/{repository}
+</div>
+
+<div id="sampleRequest" class="yui-t7">
+<br>
+<h3>Sample Request</h3>
+<a href="/rest/github/repository/feliperazeek/socialestates">http://{host}/rest/github/repository/feliperazeek/socialestates</a>
+</div>
+
+<div id="sampleResponse" class="yui-t7">
+<br>
+<h3>Sample Response</h3>
+<pre>
+{"name":"socialestates","language":"Python","parent":null,"actions":0,"id":null,"type":null,"size":26540,"owner":"feliperazeek","organization":null,"source":null,"description":"SocialEstates.com","watchers":2,"url":"https://github.com/feliperazeek/socialestates","openIssues":0,"fork":false,"homepage":"http://socialestates.com","forks":1,"score":0.0,"followers":0,"username":null,"pushedAt":null,"createdAt":null,"hasWiki":true,"hasIssues":true,"hasDownloads":true}
+</pre>
+</div>
+
+
+
+<!-- User -->
+<div class="yui-t7">
+<br><br><br>
+<h2>User</h2>
+</div>
+
+<div id="url" class="yui-t7">
+<br>
+<h3>Sample URL</h3>
+http://{host}/rest/github/user/{user}
+</div>
+
+<div id="sampleRequest" class="yui-t7">
+<br>
+<h3>Sample Request</h3>
+<a href="/rest/github/user/feliperazeek">http://{host}/rest/github/user/feliperazeek</a>
+</div>
+
+<div id="sampleResponse" class="yui-t7">
+<br>
+<h3>Sample Response</h3>
+<pre>
+{"name":"Felipe Oliveira","location":"New York, NY","id":"440809","score":0.0,"username":null,"createdAt":null,"fullname":null,"email":"felipera@gmail.com","blog":"http://geeks.aretotally.in","company":"","login":"feliperazeek","followingCount":53,"followersCount":14,"publicGistCount":2,"publicRepoCount":26,"totalPrivateRepoCount":0,"collaborators":0,"diskUsage":0,"ownedPrivateRepoCount":0,"privateGistCount":0,"gravatarId":"9ff50c2ec288cc336426e89379148490"}
+</pre>
+</div>
+
+
+
+<!-- User -->
+<div class="yui-t7">
+<br><br><br>
+<h2>Repository Search</h2>
+</div>
+
+<div id="url" class="yui-t7">
+<br>
+<h3>Sample URL</h3>
+http://{host}/rest/github/search/{q}
+</div>
+
+<div id="sampleRequest" class="yui-t7">
+<br>
+<h3>Sample Request</h3>
+<a href="/rest/github/search/socialestates">http://{host}/rest/github/search/socialestates</a>
+</div>
+
+<div id="sampleResponse" class="yui-t7">
+<br>
+<h3>Sample Response</h3>
+<pre>
+[{"name":"socialestates","language":"Python","parent":null,"actions":0,"id":null,"type":"repo","size":26540,"owner":"feliperazeek","organization":null,"source":null,"description":"SocialEstates.com","watchers":2,"url":"https://github.com/feliperazeek/socialestates","openIssues":0,"fork":false,"homepage":"http://socialestates.com","forks":1,"score":7.0462337,"followers":2,"username":"feliperazeek","pushedAt":null,"createdAt":null,"hasWiki":true,"hasIssues":true,"hasDownloads":true},{"name":"socialestates_network","language":"Python","parent":null,"actions":0,"id":null,"type":"repo","size":12132,"owner":"feliperazeek","organization":null,"source":null,"description":"SocialEstates.com","watchers":3,"url":"https://github.com/feliperazeek/socialestates_network","openIssues":0,"fork":false,"homepage":"http://www.socialestates.com","forks":1,"score":3.5835135,"followers":3,"username":"feliperazeek","pushedAt":null,"createdAt":null,"hasWiki":true,"hasIssues":true,"hasDownloads":true}]
+</pre>
+</div>
+
+
+
+<!-- Coder Impact -->
+<div class="yui-t7">
+<br><br><br>
+<h2>Coders Impact (last 100 commits on a specific repository)</h2>
+</div>
+
+<div id="url" class="yui-t7">
+<br>
+<h3>Sample URL</h3>
+http://{host}/rest/github/repository/{user}/{repository}/coderImpacts
+</div>
+
+<div id="sampleRequest" class="yui-t7">
+<br>
+<h3>Sample Request</h3>
+<a href="/rest/github/repository/feliperazeek/socialestates/coderImpacts">http://{host}/rest/github/repository/feliperazeek/socialestates/coderImpacts</a>
+</div>
+
+<div id="sampleResponse" class="yui-t7">
+<br>
+<h3>Sample Response</h3>
+<pre>
+[{"user":"","commits":4,"totalCommits":57},{"user":"feliperazeek","commits":6,"totalCommits":57},{"user":"felipera","commits":29,"totalCommits":57},{"user":"montoyab","commits":18,"totalCommits":57}]
+</pre>
+</div>
+
+
+<!-- Repository Contributors -->
+<div class="yui-t7">
+<br><br><br>
+<h2>Repository Contributors</h2>
+</div>
+
+<div id="url" class="yui-t7">
+<br>
+<h3>Sample URL</h3>
+http://{host}/rest/github/repository/{user}/{repository}/contributors
+</div>
+
+<div id="sampleRequest" class="yui-t7">
+<br>
+<h3>Sample Request</h3>
+<a href="/rest/github/repository/feliperazeek/socialestates/contributors">http://{host}/rest/github/repository/feliperazeek/socialestates/contributors</a>
+</div>
+
+<div id="sampleResponse" class="yui-t7">
+<br>
+<h3>Sample Response</h3>
+<pre>
+[{"name":null,"location":null,"id":null,"score":0.0,"username":null,"createdAt":null,"fullname":null,"email":null,"blog":null,"company":null,"login":"felipera","followingCount":0,"followersCount":0,"publicGistCount":0,"publicRepoCount":0,"totalPrivateRepoCount":0,"collaborators":0,"diskUsage":0,"ownedPrivateRepoCount":0,"privateGistCount":0,"gravatarId":"b049b5cd231ed87251a39a7d133afae1"},{"name":"Alejandro Montoya","location":"Fort Lauderdale","id":null,"score":0.0,"username":null,"createdAt":null,"fullname":null,"email":null,"blog":null,"company":null,"login":"montoyab","followingCount":0,"followersCount":0,"publicGistCount":0,"publicRepoCount":0,"totalPrivateRepoCount":0,"collaborators":0,"diskUsage":0,"ownedPrivateRepoCount":0,"privateGistCount":0,"gravatarId":"bb6db40da4642be8d74ffc1f6df1cd31"},{"name":"Felipe Oliveira","location":"New York, NY","id":null,"score":0.0,"username":null,"createdAt":null,"fullname":null,"email":"felipera@gmail.com","blog":"http://geeks.aretotally.in","company":"","login":"feliperazeek","followingCount":0,"followersCount":0,"publicGistCount":0,"publicRepoCount":0,"totalPrivateRepoCount":0,"collaborators":0,"diskUsage":0,"ownedPrivateRepoCount":0,"privateGistCount":0,"gravatarId":"9ff50c2ec288cc336426e89379148490"}]
+</pre>
+</div>
+
+
+
+<!-- Repository Commits -->
+<div class="yui-t7">
+<br><br><br>
+<h2>Repository Commits</h2>
+</div>
+
+<div id="url" class="yui-t7">
+<br>
+<h3>Sample URL</h3>
+http://{host}/rest/github/repository/{user}/{repository}/commits
+</div>
+
+<div id="sampleRequest" class="yui-t7">
+<br>
+<h3>Sample Request</h3>
+<a href="/rest/github/repository/feliperazeek/socialestates/commits">http://{host}/rest/github/repository/feliperazeek/socialestates/commits</a>
+</div>
+
+<div id="sampleResponse" class="yui-t7">
+<br>
+<h3>Sample Response</h3>
+<pre>
+[{"message":"postCraiglist","id":"ccdc5f156e876c36b5f8cfdd1f16310741e2fa88","space":0,"time":0,"date":null,"tree":"2e03592ac57473a0bb6dbf838ea8598ec8f657ed","url":"/feliperazeek/socialestates/commit/ccdc5f156e876c36b5f8cfdd1f16310741e2fa88","login":null,"author":{"name":"montoyab","location":null,"id":null,"score":0.0,"username":null,"createdAt":null,"fullname":null,"email":"montoyab1@gmail.com","blog":null,"company":null,"login":"montoyab","followingCount":0,"followersCount":0,"publicGistCount":0,"publicRepoCount":0,"totalPrivateRepoCount":0,"collaborators":0,"diskUsage":0,"ownedPrivateRepoCount":0,"privateGistCount":0,"gravatarId":null},"parents":[{"id":"254df8303bbc6fd98519dd62b1d4bb2be98af944"}],"gravatar":null,"committedDate":null,"authoredDate":null,"committer":{"name":"montoyab","location":null,"id":null,"score":0.0,"username":null,"createdAt":null,"fullname":null,"email":"montoyab1@gmail.com","blog":null,"company":null,"login":"montoyab","followingCount":0,"followersCount":0,"publicGistCount":0,"publicRepoCount":0,"totalPrivateRepoCount":0,"collaborators":0,"diskUsage":0,"ownedPrivateRepoCount":0,"privateGistCount":0,"gravatarId":null},"added":null,"removed":null},{"message":"postCraiglist","id":"254df8303bbc6fd98519dd62b1d4bb2be98af944","space":0,"time":0,"date":null,"tree":"6ddd638b09cc94da5606d03e340b50823d0225b2","url":"/feliperazeek/socialestates/commit/254df8303bbc6fd98519dd62b1d4bb2be98af944","login":null,"author":{"name":"montoyab","location":null,"id":null,"score":0.0,"username":null,"createdAt":null,"fullname":null,"email":"montoyab1@gmail.com","blog":null,"company":null,"login":"montoyab","followingCount":0,"followersCount":0,"publicGistCount":0,"publicRepoCount":0,"totalPrivateRepoCount":0,"collaborators":0,"diskUsage":0,"ownedPrivateRepoCount":0,"privateGistCount":0,"gravatarId":null},"parents":[{"id":"39d9d2309cdd2feed70fc6dade8e21b0601d4d5d"}],"gravatar":null,"committedDate":null,"authoredDate":null,"committer":{"name":"montoyab","location":null,"id":null,"score":0.0,"username":null,"createdAt":null,"fullname":null,"email":"montoyab1@gmail.com","blog":null,"company":null,"login":"montoyab","followingCount":0,"followersCount":0,"publicGistCount":0,"publicRepoCount":0,"totalPrivateRepoCount":0,"collaborators":0,"diskUsage":0,"ownedPrivateRepoCount":0,"privateGistCount":0,"gravatarId":null},"added":null,"removed":null}] 
+</pre>
+</div>
