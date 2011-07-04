@@ -1,5 +1,7 @@
 .classpath
+precompiled
 bin
+db
 .project
 .settings
 tmp
